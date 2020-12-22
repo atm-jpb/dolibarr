@@ -124,7 +124,7 @@ if ($action == "create"){
             setEventMessages($currencyRate_static->error, $currencyRate_static->errors, 'errors');
 		}
 	} else {
-		setEventMessage($langs->trans('NoEmptyRate'), "errors");
+        setEventMessages($langs->trans('Error'), null, "warnings");
 	}
 }
 
@@ -251,10 +251,10 @@ if ($action!= "updateRate" && $action!= "deleteRate" ) {
 	print '<table class="noborder centpercent"><tr>';
 
 	print ' <td>' . $langs->trans('date') . '</td>';
-	print ' <td><input class="minwidth200" name="dateinput" value="" type="date"></td>';
+	print ' <td>'. $form->selectDate($dateinput, 'dateinput') .'</td>';
 
 	print ' <td>' . $langs->trans('Codemulticurrency') . '</td>';
-	print '<td>' . $form->selectMultiCurrency('', 'multicurrency_code', 1, " code != '".$conf->currency."'", true) . '</td>';
+	print '<td>' .$form->selectMultiCurrency((GETPOSTISSET('multicurrency_code') ? GETPOST('multicurrency_code', 'alpha') : $multicurrency_code), 'multicurrency_code', 0, " code != '".$conf->currency."'", true).'</td>';
 
 	print ' <td>' . $langs->trans('rate') . '</td>';
 	print ' <td><input type="number" min ="0" step="any" class="minwidth200" name="rateinput" value=""></td>';
