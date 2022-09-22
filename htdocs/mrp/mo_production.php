@@ -1434,7 +1434,6 @@ if ($object->id > 0 && (empty($action) || ($action != 'edit' && $action != 'crea
 							if (isModEnabled('stock')) {
 								print '<td></td>';
 							}
-
 							// Lot / Batch
 							if (isModEnabled('productbatch')) {
 								print '<td>';
